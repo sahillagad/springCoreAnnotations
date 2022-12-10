@@ -1,0 +1,8 @@
+package com.masai.Configration;
+
+public class Snippet {
+	public static void main(String[] args) {
+		StudentDaoImpl
+	}
+}
+

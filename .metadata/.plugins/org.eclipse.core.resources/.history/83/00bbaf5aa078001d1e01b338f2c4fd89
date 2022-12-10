@@ -1,0 +1,40 @@
+package com.masai.Dao;
+
+import com.masai.entity.Student;
+
+public class StudentDaoImpl implements StudentDao{
+
+	@Override
+	public String saveStudent(Student student) {
+
+		return null;
+	}
+
+	@Override
+	public Student findStudent(int Roll) {
+	
+		return null;
+	}
+
+	@Override
+	public String updateStudent(Student student) {
+
+		return null;
+	}
+
+	@Override
+	public String deleteStudent(int Roll) {
+	
+		return null;
+	}
+
+	@Override
+	public void getAllStudent() {
+
+		
+	}
+
+	
+	
+	
+}

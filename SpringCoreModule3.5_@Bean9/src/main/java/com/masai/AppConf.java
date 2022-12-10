@@ -1,0 +1,52 @@
+package com.masai;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan(basePackages =   "com.masai")
+public class AppConf {
+	
+	@Bean
+	public B getB() {
+		B b=new B();
+	return b;
+	}
+	
+	
+	@Bean
+	public List<String> names() {
+		
+		List<String> list=new  ArrayList<>();
+		
+		list.add("Sahil");
+		list.add("Raj");
+		list.add("Ram");
+		list.add("Rani");
+		
+		
+		return list;
+	}
+	
+	
+	@Bean
+	public List<String> heros() {
+		
+		List<String> list=new  ArrayList<>();
+		
+		list.add("Tom");
+		list.add("IronMan");
+		list.add("SpiderMan");
+		list.add("BatMan");
+		
+		
+		return list;
+	}
+	
+	
+	
+}

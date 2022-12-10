@@ -1,0 +1,12 @@
+package com.masai;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class C {
+
+		public C getC() {
+		   C c=new C();
+			return c;
+		}	
+}

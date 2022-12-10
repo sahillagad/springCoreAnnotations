@@ -1,0 +1,178 @@
+package com.masai.presentation;
+
+import java.util.Scanner;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import com.masai.AppConfi;
+import com.masai.Dao.StudentDao;
+import com.masai.Dao.StudentDaoImpl;
+import com.masaiEntity.Student;
+import com.masaiservice.StudentServiceImpl;
+
+@Controller
+public class StudentPresentation {
+
+	@Autowired
+	private StudentDao serviceImpl;
+	 
+
+	public void InsertStudent() {
+       Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter Student Name");
+		String name=sc.next();
+		
+		System.out.println("Enter Student Marks");
+		int roll=sc.nextInt();
+		       
+		Student student=new Student(name, roll);
+       String s=  serviceImpl.saveStudent(student);
+		
+       System.out.println(s);
+     sc.close();
+	}
+
+
+	public void findStudentByRoll() {
+	Scanner sc=new Scanner(System.in);
+		
+	 System.out.println("Entrer Roll Number");
+	 int roll=sc.nextInt();	
+	 
+	 Student student= serviceImpl.findStudent(roll);
+
+	 if(student==null) {
+		 System.out.println("Student Is Not Avilable....."); 
+		 
+	 }
+	 else {
+		 System.out.println("Roll    : "+student.getRoll());
+		 System.out.println("Name : "+student.getName());
+         System.out.println("Marks : "+student.getMarks());
+		   
+		 
+	 }
+	}
+
+
+	public void updateStudentByRoll() {
+
+		Scanner sc=new Scanner(System.in);
+		
+		 System.out.println("Entrer Roll Number");
+		 int roll=sc.nextInt();	
+		 
+		 Student student= serviceImpl.findStudent(roll);
+
+		 if(student==null) {
+			 System.out.println("Student Is Not Avilable....."); 
+			 
+		 }
+		 else {
+		
+			 System.out.println("Enter 1 For Update Name");
+			 System.out.println("Enter 2 For Update Marks");
+			 
+			 int x= sc.nextInt();
+			  
+			 if(x==1) {
+				 
+				 System.out.println("Enter Update Name");
+				 String name=sc.next();
+				 student.setName(name);
+				 
+				 serviceImpl.updateStudent(student);
+				 
+			 }
+					 
+			 if(x==2) {
+				 System.out.println("Enter Update Marks");
+				 int marks=sc.nextInt();
+				 student.setMarks(marks);
+				 
+				 serviceImpl.updateStudent(student);
+			 }
+			 
+			 
+			 
+			 if(x>2) {
+				 System.out.println("Please Give Proper Input");
+				 
+			 }
+			 
+		 }
+
+		
+	}
+
+
+	public void deleteStudentByRoll() {
+		Scanner sc=new Scanner(System.in);
+		
+		 System.out.println("Entrer Roll Number");
+		 int roll=sc.nextInt();	
+		 
+		String s=  serviceImpl.deleteStudent(roll);
+  		
+		System.out.println(s);
+	}
+
+
+	public void getAllStudentByRoll() {
+
+		serviceImpl.getAllStudent();
+	}
+
+	
+	public static void main(String[] args) {
+		
+		ApplicationContext ap=new AnnotationConfigApplicationContext(AppConfi.class);
+	 StudentPresentation presentation=(StudentPresentation) ap.getBean("studentPresentation");
+		
+		Scanner sc=new Scanner(System.in);
+		
+		while(true) {
+		System.out.println("Enter 1 For Add Student");
+		System.out.println("Enter 2 For Find Student");
+		System.out.println("Enter 3 For Update Student");
+		System.out.println("Enter 4 For Delete Student");
+		System.out.println("Enter 5 For Get All Student");
+		
+		
+		int output = sc.nextInt();
+		switch (output) {
+		  case 1:
+	       presentation.InsertStudent();
+		    break;
+	       
+		  case 2:
+		        presentation.findStudentByRoll();
+		    break;
+		  case 3:
+		       presentation.updateStudentByRoll();
+			    break;
+		  case 4:
+			    presentation.deleteStudentByRoll();
+			    break;
+		  case 5:
+	       presentation.getAllStudentByRoll();
+			    break;
+		  case 6:
+			         break; 
+			 
+		  default:
+		    System.err.println("-----Thank You----");
+		}
+	}
+		
+	}
+		
+
+		  
+	
+}

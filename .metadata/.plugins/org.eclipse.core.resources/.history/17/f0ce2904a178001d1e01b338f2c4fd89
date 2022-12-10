@@ -1,0 +1,49 @@
+package com.masai.Test;
+
+import java.util.Scanner;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.masai.presentation.StudentPresentation;
+
+@Controller
+public class MAIN {
+	
+	@Autowired
+	 private static StudentPresentation presentation;
+	
+	
+	public static void main(String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter 1 For Add Student");
+		System.out.println("Enter 2 For Find Student");
+		System.out.println("Enter 3 For Update Student");
+		System.out.println("Enter 4 For Delete Student");
+		System.out.println("Enter 5 For Get All Student");
+		
+		
+		int output = sc.nextInt();
+		switch (output) {
+		  case 1:
+	       presentation.InsertStudent();
+		    break;
+		  case 2:
+		        presentation.findStudentByRoll();
+		    break;
+		  case 3:
+		       presentation.updateStudentByRoll();
+			    break;
+		  case 4:
+			    presentation.deleteStudentByRoll();
+			    break;
+		  case 5:
+	       presentation.getAllStudentByRoll();
+			    break;
+		  default:
+		    System.err.println("-----Thank You----");
+		}
+	}
+}

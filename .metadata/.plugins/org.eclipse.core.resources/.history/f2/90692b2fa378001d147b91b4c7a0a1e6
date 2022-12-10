@@ -1,0 +1,20 @@
+package com.masai;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.masai.Dao.StudentDaoImpl;
+
+public class Demo {
+public static void main(String[] args) {
+	
+	ApplicationContext ap=new AnnotationConfigApplicationContext(AppConfi.class);
+	
+	StudentDaoImpl daoImpl=(StudentDaoImpl)  ap.getBean("studentDaoImpl");
+ 
+	System.out.println(daoImpl);
+	
+	
+	
+}
+}

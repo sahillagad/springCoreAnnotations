@@ -1,0 +1,49 @@
+package com.masai.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.masai.Dao.StudentDao;
+import com.masai.Dao.StudentDaoImpl;
+import com.masai.Entity.Student;
+
+@Service
+public class StudentServiceImpl implements StudentService{
+
+	@Autowired
+	private StudentDaoImpl dao ;
+
+	public void setDao(StudentDaoImpl dao) {
+		this.dao = dao;
+	}
+
+	@Override
+	public boolean addStudent(Student student) {
+		
+		return dao.addStudent(student);
+	}
+
+	@Override
+	public Student findStudentByRoll(int RollNO) {
+	
+		return dao.findStudentByRoll(RollNO);
+	}
+
+	@Override
+	public String romoveStudent(int RollNo) {
+	
+		return dao.romoveStudent(RollNo);
+	}
+
+	@Override
+	public String updateStudent(Student student) {
+
+		return dao.updateStudent(student);
+	}
+
+	
+	
+	
+	
+	
+}

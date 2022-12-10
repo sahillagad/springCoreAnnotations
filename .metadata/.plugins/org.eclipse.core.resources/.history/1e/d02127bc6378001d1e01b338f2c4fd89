@@ -1,0 +1,61 @@
+package com.masai.utility;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+@Component
+public class DBUTILITY {
+
+	@Value("${db.driverName}")
+	private String DriveName;
+	
+	
+	@Value("${db.url}")
+	private String url;
+	
+	@Value("${db.username}")
+	private String Username;
+	
+	@Value("${db.password}")
+	private String password;
+	
+	@Bean
+	public static Connection provideconnection() { 	
+		Connection conn=null;
+		
+		
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+		
+		}
+		
+		String url="jdbc:mysql://localhost:3306/departmentandemployee";
+		
+		
+		try {
+			 conn=DriverManager.getConnection(url,"root","root");
+	 
+			System.out.println(conn);
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return conn;
+		
+		
+		
+		
+		
+	
+	}
+}

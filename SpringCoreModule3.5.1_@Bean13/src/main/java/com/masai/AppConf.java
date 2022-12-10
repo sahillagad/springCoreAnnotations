@@ -1,0 +1,22 @@
+package com.masai;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan(basePackages = "com.masai")
+public class AppConf {
+
+
+	 
+	@Bean
+	 public Student getStudent() {
+		 
+		 Student student=new Student(1, "Sahil", 567);
+	   return student;
+		
+	 }
+	 
+	         
+}

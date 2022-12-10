@@ -1,0 +1,14 @@
+package com.masai1;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class C {
+
+ 	public void showC() {
+    System.out.println("I am inside the showC method of C class");
+    System.err.println("-----Class C-------");	
+		
+	}
+	
+}

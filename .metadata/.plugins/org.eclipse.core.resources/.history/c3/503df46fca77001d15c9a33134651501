@@ -1,0 +1,16 @@
+package com.masai;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class A {
+
+	 
+	private B b;
+	private C c;
+	
+	
+	
+	
+	
+}

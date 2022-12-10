@@ -1,0 +1,35 @@
+package com.masai;
+
+import java.util.Scanner;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.masaiEntity.Student;
+import com.masaiservice.StudentServiceImpl;
+
+public class Demo {
+public static void main(String[] args) {
+	
+	ApplicationContext ap=new AnnotationConfigApplicationContext(AppConfi.class);
+	
+	StudentServiceImpl  serviceImpl=(StudentServiceImpl)  ap.getBean("studentServiceImpl");
+ 
+
+    Scanner sc=new Scanner(System.in);
+	
+		System.out.println("Enter Student Name");
+		String name=sc.next();
+		
+		System.out.println("Enter Student Marks");
+		int roll=sc.nextInt();
+		       
+		Student student=new Student(name, roll);
+    String s=  serviceImpl.saveStudent(student);
+		
+    System.out.println(s);
+  sc.close();
+	
+	
+}
+}

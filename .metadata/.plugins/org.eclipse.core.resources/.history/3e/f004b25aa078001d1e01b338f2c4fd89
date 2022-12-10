@@ -1,0 +1,84 @@
+package com.masai.presentation;
+
+import java.util.Scanner;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.masai.entity.Student;
+import com.masai.service.StudentServiceImpl;
+
+@Controller
+public class StudentPresentation {
+
+	@Autowired
+	private static StudentServiceImpl serviceImpl;
+	 
+
+	public void InsertStudent() {
+       Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter Student Name");
+		String name=sc.next();
+		
+		System.out.println("Enter Student Marks");
+		int roll=sc.nextInt();
+		       
+		Student student=new Student(name, roll);
+       String s=  serviceImpl.saveStudent(student);
+		
+       System.out.println(s);
+     sc.close();
+	}
+
+
+	public void findStudentByRoll() {
+	Scanner sc=new Scanner(System.in);
+		
+	 System.out.println("Entrer Roll Number");
+	 int roll=sc.nextInt();	
+	 
+	 Student student= serviceImpl.findStudent(roll);
+
+	 if(student==null) {
+		 System.out.println("Student Is Not Avilable....."); 
+		 
+	 }
+	 else {
+		 System.out.println("Roll    : "+student.getRoll());
+		 System.out.println("Name : "+student.getName());
+         System.out.println("Marks : "+student.getMarks());
+		   
+		 
+	 }
+	}
+
+
+	public void updateStudentByRoll() {
+		
+
+		
+	}
+
+
+	public void deleteStudentByRoll(int Roll) {
+		Scanner sc=new Scanner(System.in);
+		
+		 System.out.println("Entrer Roll Number");
+		 int roll=sc.nextInt();	
+		 
+		String s=  serviceImpl.deleteStudent(roll);
+  		
+		System.out.println(s);
+	}
+
+
+	public void getAllStudentByRoll() {
+
+		serviceImpl.getAllStudent();
+	}
+
+	
+	  
+	
+}

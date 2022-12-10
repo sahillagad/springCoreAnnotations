@@ -1,0 +1,17 @@
+package com.masai;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
+
+@Configuration
+@ComponentScan(basePackages = "com.masai")
+@PropertySources({
+	@PropertySource("a1.properties") ,
+	@PropertySource("a2.properties") 
+})
+public class Appconfig {
+
+	
+}

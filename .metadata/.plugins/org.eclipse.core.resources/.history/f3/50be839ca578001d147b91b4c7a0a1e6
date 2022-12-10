@@ -1,0 +1,102 @@
+package com.masai;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class StudentDaoImpl implements StudentDao{
+
+	@Autowired 
+	private EntityManager em;
+	
+	
+	
+	@Override
+	public String saveStudent(Student student) {
+ String result="Student is not Registered...";
+		 em.getTransaction().begin();
+		 
+		 
+		 
+		 em.persist(student);
+		 result="student is registered...";
+		 
+
+	em.getTransaction().commit();
+	return result;
+		
+	}
+
+	@Override
+	public Student findStudent(int Roll) {
+	Student student=null;
+	 
+	student=em.find(Student.class,Roll );
+	
+	return student;
+	}
+
+	@Override
+	public String updateStudent(Student student) {
+		 String result="Student is not Update...";
+		 em.getTransaction().begin();
+		 
+		 
+		 
+		 em.persist(student);
+		 result="student is Update Successfully...";
+		 
+
+	em.getTransaction().commit();
+	return result;
+	}
+
+	@Override
+	public String deleteStudent(int Roll) {
+		Student student=null;
+		 String result="Student is not Delete...";
+		  
+		 
+			student=em.find(Student.class,Roll );
+		 
+			if(student!=null) {
+				
+		em.getTransaction().begin();		
+		 em.remove(student);
+			em.getTransaction().commit();		
+		 result="student is Delete Successfully...";
+		 
+			}
+
+
+	return result;
+	}
+
+	@Override
+	public void getAllStudent() {
+
+		String jpql="Select  s from Student s";
+		
+     Query query=	em.createQuery(jpql);
+    List<Student> list=	query.getResultList();	
+      
+    
+    for(Student student:list) {
+    	
+    	System.out.println(student);
+    	
+    }
+		
+		
+		
+	}
+
+	
+	
+	
+}
